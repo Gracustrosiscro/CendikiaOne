@@ -12,6 +12,24 @@ module.exports = {
                 console.log(error)
             })
     },
+    updateNote: (req, res) => {
+        const id = req.params.idNote
+        console.log(id);
+        
+        const data ={
+            idCat:req.body.idCat,
+            title:req.body.title,
+            desc:req.body.desc,
+            date:new Date()            
+        }
+        note.getNoteById(id,data)
+            .then((result) => {
+                miscHelper.response(res, result, 200)
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    },
     getAllCategory: (req, res) => {
         note.getAllCat()
             .then((result) => {

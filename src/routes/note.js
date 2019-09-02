@@ -12,6 +12,7 @@ let upload = multer({ storage: storage, limits: { fileSize: 100000000 } })
 
 router
     .get('/', noteController.getAllNote)
+    .patch('/:idNote', noteController.updateNote)
     .get('/category', noteController.getAllCategory)
     .post('/category',upload.single('image'), noteController.postCategory)
     .post('/', noteController.postNote)
